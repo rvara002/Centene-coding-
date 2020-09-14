@@ -13,7 +13,7 @@ interface Abc {
 export class AppComponent implements OnInit {
   name: string = "";
   id: string = "";
-  dob: any = "";
+  dob: string = "";
   active: boolean = false;
 
   title = "codingchallenge";
@@ -25,17 +25,15 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.getEnrolledata();
   }
-
+  // function to capture data to display in modal dialogue
   captureSelectedenroll(name: any, id: any, dob: any, active: any) {
-    // function to capture data to display in modal dialogue
     this.name = name;
     this.id = id;
     this.dob = dob;
     this.active = active;
   }
-
+  // function to put data, save modified data
   putSelectedenroll(name: any, id: any, dob: any, active: any) {
-    // function to put data, save modified data
     this.name = name;
     this.id = id;
     this.dob = dob;
@@ -50,7 +48,7 @@ export class AppComponent implements OnInit {
         if (resp) {
           this.getEnrolledata();
         } else {
-          this.errorMessage = "Error: failed to retrieve divisions.";
+          this.errorMessage = "Error: failed to retrieve enrolle information.";
         }
       },
       (error) => {
@@ -58,15 +56,19 @@ export class AppComponent implements OnInit {
       }
     );
   }
+  //function to get entire enrolle data from backend
   getEnrolledata() {
-    //function to get entire enrolle data from backend
-    // tslint:disable-next-line: deprecation
-    this.enroll.getEnrolledata().subscribe((resp: any) => {
-      if (resp) {
-        this.data = resp;
-      } else {
-        this.errorMessage = "Error: failed to retrieve divisions.";
+    this.enroll.getEnrolledata().subscribe(
+      (resp: any) => {
+        if (resp) {
+          this.data = resp;
+        } else {
+          this.errorMessage = "Error: failed to retrieve  enrolle information.";
+        }
+      },
+      (error) => {
+        alert("error occured getting enrolle information");
       }
-    });
+    );
   }
 }

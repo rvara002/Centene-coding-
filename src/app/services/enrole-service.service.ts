@@ -7,13 +7,12 @@ import { Constants } from "../../model/constants";
 })
 export class EnroleServiceService {
   constructor(private http: HttpClient) {}
-
+  //fucntion to get enrolle data
   public getEnrolledata() {
-    //fucntion to get enrolle data
     return this.http.get(Constants.getenrollees);
   }
+  //funtion to put modified enrolle data
   public putEnrolledata(data: any, id: any) {
-    //funtion to put modified enrolle data
     return this.http.put(Constants.putenrollees + id, data);
   }
 }
