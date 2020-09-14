@@ -1,0 +1,28 @@
+<div
+  (click)="onContainerClicked($event)"
+  class="modal fade"
+  tabindex="-1"
+  [ngClass]="{ in: visibleAnimate }"
+  [ngStyle]="{
+    display: visible ? 'flex' : 'none',
+    opacity: visibleAnimate ? 1 : 0
+  }"
+>
+  <div class="dialog">
+    <div class="modal-content modelContent" style="zoom: 0.87">
+      <div class="modal-header">
+        <span class="title">{{ title }}</span>
+        <i (click)="this.closeFilterPopups()" class="icon icon-cancel_16"></i>
+        <ng-template #otherPopupFilter>
+          <i (click)="hide()" class="icon icon-cancel_16"></i>
+        </ng-template>
+      </div>
+      <div class="modal-body">
+        <ng-content select=".app-modal-body"></ng-content>
+      </div>
+      <div class="modal-footer">
+        <ng-content select=".app-modal-footer"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

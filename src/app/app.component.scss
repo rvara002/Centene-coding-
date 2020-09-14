@@ -1,0 +1,122 @@
+.example-header-image {
+  background-size: cover;
+}
+
+app-modal-dialog {
+  &.filter-modal {
+    div.app-modal-body {
+      border-right: 1px solid #dfdfdf;
+    }
+
+    .app-modal-footer {
+      width: 100%;
+    }
+  }
+
+  &.settings-modal {
+    .app-modal-body {
+      height: 250px;
+      font-size: 16px;
+      padding-top: 1em;
+
+      span {
+        margin-right: 1em;
+      }
+
+      select {
+        padding: 0;
+        color: #58585b;
+      }
+    }
+
+    .app-modal-footer {
+      padding: 0 1.5em;
+
+      button {
+        color: white;
+        font-size: 11pt;
+        font-weight: bold;
+        border-radius: 2rem;
+        line-height: 11px;
+        margin: 5px 5px 0px 5px;
+        vertical-align: middle;
+        background-color: #7f7f86;
+        outline: none;
+        height: 40px;
+
+        &.highlight {
+          background-color: #049fd9;
+
+          &:active {
+            background-color: #036e97;
+          }
+        }
+
+        &:active {
+          background-color: #58585b;
+        }
+      }
+    }
+  }
+}
+
+div.new-component {
+  min-height: calc(112vh - 5.8rem);
+  overflow-x: hidden;
+
+  font-family: CiscoSans, "Helvetica Neue", Verdana, Geneva, Tahoma, sans-serif;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: #f2f2f2;
+
+  div.title-header {
+    color: #8498b4;
+    font-size: medium;
+    float: right;
+    padding-bottom: 10px;
+  }
+}
+
+.card-box {
+  width: 100%;
+  display: block;
+  border: 1px solid #e0e0e0;
+  padding: 10px 0px 0px 0px;
+  box-shadow: 2px 2px 4px #ced4da;
+  background-color: lightgray;
+}
+
+div.row {
+  margin: 12px 12px 20px 12px;
+  display: flex;
+  justify-content: space-around;
+}
+
+div.col-md-3 {
+  margin-right: 10px;
+  border: 1px solid #e0e0e0;
+  padding: 10px 0px 0px 0px;
+  box-shadow: 2px 2px 4px #ced4da;
+
+  &.small-size-width {
+    max-width: 16%;
+    margin: 1em;
+    padding: 0em 0.6em;
+  }
+}
+
+div.row-header {
+  width: 100%;
+  min-height: 60px;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 2px;
+
+  background-color: white;
+
+  padding: 0em 1.5em;
+}

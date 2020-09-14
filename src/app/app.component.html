@@ -1,0 +1,117 @@
+<div class="row-header">
+  <h2 class="title-header">Centene Coding Challenge</h2>
+</div>
+<div class="container-fluid">
+  <div class="new-component">
+    <div class="card-box">
+      <div class="row">
+        <mat-card
+          style="margin: 10px"
+          *ngFor="let enrolle of data; let i = index"
+          class="col-md-3"
+        >
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image">
+              <svg height="50" width="50">
+                <circle
+                  cx="25"
+                  cy="25"
+                  r="20"
+                  stroke="black"
+                  stroke-width="3"
+                  fill="white"
+                  [ngStyle]="{
+                    fill: enrolle.active === false ? 'red' : 'lightgreen'
+                  }"
+                />
+                <g>
+                  <text
+                    x="50%"
+                    y="50%"
+                    text-anchor="middle"
+                    stroke="black"
+                    stroke-width="2px"
+                    dy=".3em"
+                  >
+                    {{ enrolle.name.charAt(0) }}
+                  </text>
+                </g>
+                Sorry, your browser does not support inline SVG.
+              </svg>
+            </div>
+            <mat-card-title> Name: {{ enrolle.name }}</mat-card-title>
+            <mat-card-subtitle
+              [ngStyle]="{
+                'background-color':
+                  enrolle.active === false ? 'red' : 'lightgreen'
+              }"
+            >
+              Active: {{ enrolle.active }}</mat-card-subtitle
+            >
+          </mat-card-header>
+          <mat-card-content>
+            <h6>ID: {{ enrolle.id }}</h6>
+            <h5>DOB: {{ enrolle.dateOfBirth }}</h5>
+          </mat-card-content>
+          <mat-card-actions>
+            <button
+              (click)="
+                settingsModal.show();
+                captureSelectedenroll(
+                  enrolle.name,
+                  enrolle.id,
+                  enrolle.dateOfBirth,
+                  enrolle.active
+                )
+              "
+              type="button"
+              class="btn btn-info"
+            >
+              Modify
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+
+      <app-modal-dialog
+        title="Edit Enrollee Information"
+        class="settings-modal"
+        #settingsModal
+      >
+        <div class="app-modal-body">
+          <div>
+            <h5>Enrolee Name:</h5>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              required
+              [(ngModel)]="name"
+              name="name"
+            />
+          </div>
+          <h5>Enrolle Id:{{ id }}</h5>
+          <h5>Enrolle DOB:{{ dob }}</h5>
+          <div>
+            <h5>Active:</h5>
+            <select [(ngModel)]="active" name="active" class="form-control">
+              <option [ngValue]="true">true</option>
+              <option [ngValue]="false">false</option>
+            </select>
+          </div>
+        </div>
+        <div class="app-modal-footer">
+          <button
+            class="highlight"
+            (click)="
+              settingsModal.hide(); putSelectedenroll(name, id, dob, active)
+            "
+          >
+            Submit
+          </button>
+          <button (click)="settingsModal.hide()">Close</button>
+        </div>
+      </app-modal-dialog>
+    </div>
+  </div>
+</div>
